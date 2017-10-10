@@ -30,7 +30,6 @@ synchronization actions those in ` applyMiddleware ` would be triggered by ` nex
 ```js
 
 // api.js
-
 const getFetchData = (next) => {
   request()
     .then(res => {
@@ -69,13 +68,10 @@ in this file, the `action` whose key is 'callFetch' would be triggered.
 
 #### applyMiddleware
 
-synchronization actions would
-
 
 ```js
 
 // store.js
-
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
