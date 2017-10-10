@@ -6,7 +6,7 @@ action in redux applyMiddleware
 #### synchronization actions 
 
 
-synchronization actions are function for activating asynchronous actions those in ` applyMiddleware `:
+synchronization actions are functions that be used for activating asynchronous actions those in ` api.js ` which be covered in ` applyMiddleware  `:
 
 ```shell
 // action.js
