@@ -3,7 +3,7 @@ action in redux applyMiddleware
 
 ## introduce
 
-synchronization actions 
+##### synchronization actions 
 
 
 synchronization actions are function for activating asynchronous actions those in ` applyMiddleware `:
@@ -21,7 +21,7 @@ const userRequest = (login) => ({
 });
 ```
 
-asynchronization actions
+##### asynchronization actions
 
 synchronization actions those in ` applyMiddleware ` would be triggered by ` next ` 
 
