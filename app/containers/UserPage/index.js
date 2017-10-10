@@ -10,26 +10,15 @@ import { connect } from "react-redux";
 class UserPage extends Component {
   constructor(props) {
     super(props);
-    //console.log(111);
   }
 
   componentDidMount() {
-    console.log(1111);
     const {userRequest, login, starredRepoRequest, fetchOfUser, fetchOfRepo} = this.props;
     if (fetchOfUser || fetchOfRepo) {
       return false;
     }
     userRequest(login);
     starredRepoRequest(login);
-  }
-
-  componentWllMount() {
-    // const {userRequest, login, starredRepoRequest, fetchOfUser, fetchOfRepo} = this.props;
-    // if (fetchOfUser || fetchOfRepo) {
-    //   return false;
-    // }
-    // userRequest(login);
-    // starredRepoRequest(login);
   }
 
   loadMoreStarredRepo = () => {
