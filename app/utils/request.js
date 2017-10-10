@@ -1,7 +1,6 @@
 // es6 Promise polyfill
 import Promise from 'es6-promise'
 import {env, token, zoneCode} from '../config/env'
-import '../3rd/seed'
 
 const currEnv = env.split(';')[0];
 const currHost = env.split(';')[1];
