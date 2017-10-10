@@ -8,7 +8,7 @@ action in redux applyMiddleware
 
 synchronization actions are functions that be used for activating asynchronous actions those in ` api.js ` which be covered in ` applyMiddleware  `:
 
-```shell
+```js
 // action.js
 const USER_REQUEST_STARTED = 'USER_REQUEST_STARTED';
 const LOAD_USER = 'LOAD_USER';
@@ -20,13 +20,15 @@ const userRequest = (login) => ({
     login
   }
 });
+
 ```
 
 #### asynchronization actions
 
 synchronization actions those in ` applyMiddleware ` would be triggered by ` next ` 
 
-```shell
+```js
+
 // api.js
 
 const getFetchData = (next) => {
@@ -60,6 +62,7 @@ export default ({getState, dispatch}) => (next) => (action) => {
     // do...
   }
 }
+
 ```
 
 in this file, the `action` whose key is 'callFetch' would be triggered.
@@ -69,8 +72,10 @@ in this file, the `action` whose key is 'callFetch' would be triggered.
 synchronization actions would
 
 
-```
+```js
+
 // store.js
+
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
@@ -82,4 +87,5 @@ const createStoreWithMiddleware = applyMiddleware(
   api, // in applyMiddleware
   createLogger(),
 )(createStore);
+
 ```
