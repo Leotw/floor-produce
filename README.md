@@ -28,6 +28,20 @@ synchronization actions those in ` applyMiddleware ` would be triggered by ` nex
 
 ```shell
 // api.js
+
+const getFetchData = (next) => {
+  request()
+    .then(res => {
+      return next({
+        type: 'SOME_TYPES',
+        someData
+      });  // asynchronization actions would be triggered
+    })
+    .catch(err => {
+      // other actions
+    });
+};
+
 export default ({getState, dispatch}) => (next) => (action) => {
   console.log('This is from middleware api::');
   const callFetch = action['callFetch'];
@@ -38,10 +52,12 @@ export default ({getState, dispatch}) => (next) => (action) => {
   const [requestStarted,requestSuccess] = types;
   if (requestStarted === 'USER_REQUEST_STARTED') {
     next({type: requestStarted});
-    /*do...*/
+    getFetchData(next);
+    // do...
   } else if (requestStarted === 'STARRED_REQUEST_STARTED') {
     next({type: requestStarted});
-    /*do...*/
+    getFetchData(next);
+    // do...
   }
 }
 ```
@@ -50,7 +66,11 @@ in this file, the `action` whose key is 'callFetch' would be triggered.
 
 #### applyMiddleware
 
+synchronization actions would
+
+
 ```
+// store.js
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
