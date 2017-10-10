@@ -1,0 +1,54 @@
+.transition-wrapper {
+  position: relative;
+}
+/* 翻页 */
+.left-enter, .right-enter {
+  opacity: 0.01;
+}
+
+.left-enter.left-enter-active {
+  opacity: 1;
+  animation: left-slide 200ms linear;
+  transition: opacity 150ms ease-in;
+}
+
+.left-leave {
+  opacity: 1;
+}
+
+.left-leave.left-leave-active, .right-leave.right-leave-active {
+  opacity: 0.01;
+  transition: opacity 100ms ease-in;
+}
+
+@keyframes left-slide {
+  from {
+    opacity: 0.01;
+    transform:translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform:translateX(0%);
+  }
+}
+
+.right-enter.right-enter-active {
+  opacity: 1;
+  animation: rightSlide 200ms linear;
+  transition: opacity 150ms ease-in;
+}
+
+.right-leave {
+  opacity: 1;
+}
+
+@keyframes rightSlide {
+  from {
+    opacity: 0.01;
+    transform:translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform:translateX(0%);
+  }
+}
