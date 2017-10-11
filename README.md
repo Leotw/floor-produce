@@ -1,4 +1,4 @@
-# real-produce
+# floor-produce
 action in redux applyMiddleware
 
 ## introduce
@@ -13,8 +13,9 @@ synchronization actions are functions that be used for activating asynchronous a
 const USER_REQUEST_STARTED = 'USER_REQUEST_STARTED';
 const LOAD_USER = 'LOAD_USER';
 
-const userRequest = (login) => ({
-  ['callFetch']: {
+// export for components to use
+export const userRequest = (login) => ({
+['callFetch']: {
     types: [USER_REQUEST_STARTED, LOAD_USER],
     url: `${loginApi}${login}`,
     login
@@ -25,10 +26,9 @@ const userRequest = (login) => ({
 
 #### asynchronization actions
 
-synchronization actions those in ` applyMiddleware ` would be triggered by ` next ` 
+some actions those in ` api.js ` would be triggered by ` next `. In this file, the `action` whose key is called 'callFetch' would be triggered, but it is not factual action or  asyn actions and it just originates other actions to execute that be triggered by ` next `.
 
 ```js
-
 // api.js
 const getFetchData = (next) => {
   request()
@@ -43,14 +43,15 @@ const getFetchData = (next) => {
     });
 };
 
+// export for applyMiddleware to catch all actions contain asyn actions
 export default ({getState, dispatch}) => (next) => (action) => {
   console.log('This is from middleware api::');
-  const callFetch = action['callFetch'];
+  const callFetch = action['callFetch']; // catch action whose key called callFetch, you could also regard as an Object  
   if (!callFetch) {
     return next(action);
   }
   const {types, url, login} = callFetch;
-  const [requestStarted,requestSuccess] = types;
+  const [requestStarted, requestSuccess] = types;
   if (requestStarted === 'USER_REQUEST_STARTED') {
     next({type: requestStarted});
     getFetchData(next);
@@ -64,13 +65,12 @@ export default ({getState, dispatch}) => (next) => (action) => {
 
 ```
 
-in this file, the `action` whose key is 'callFetch' would be triggered.
 
 #### applyMiddleware
 
+`api.js`  must be covered in ` applyMiddleware  ` to does work as expected.
 
 ```js
-
 // store.js
 import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
@@ -85,3 +85,5 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 
 ```
+
+
