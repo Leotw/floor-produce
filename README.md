@@ -26,7 +26,7 @@ export const userRequest = (login) => ({
 
 #### asynchronization actions
 
-some actions those in ` api.js ` will be triggered by ` next `. In this file, the `action` it's key called 'callFetch' will be triggered, but it is not factual action or asyn actions and it just originates other actions to execute, these actions will be triggered by ` next `.
+some actions in ` api.js ` will be triggered by ` next `. In this file, the `action` it's key called 'callFetch' will be triggered, but it is not factual action or asyn action and just originates other actions functions to execute, these actions will be triggered by ` next `.
 
 ```js
 // api.js
