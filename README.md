@@ -1,12 +1,12 @@
 # floor-produce
 action in redux applyMiddleware
 
-## introduce
+## Introduce
 
 #### synchronization actions 
 
 
-synchronization actions are functions that be used for activating asynchronous actions those in ` api.js ` which be covered in ` applyMiddleware  `:
+synchronization action  function used for activating asynchronous action in ` api.js `  which is composed in ` applyMiddleware  `:
 
 ```js
 // action.js
@@ -26,7 +26,7 @@ export const userRequest = (login) => ({
 
 #### asynchronization actions
 
-some actions those in ` api.js ` would be triggered by ` next `. In this file, the `action` whose key is called 'callFetch' would be triggered, but it is not factual action or  asyn actions and it just originates other actions to execute that be triggered by ` next `.
+some actions those in ` api.js ` will be triggered by ` next `. In this file, the `action` it's key called 'callFetch' will be triggered, but it is not factual action or asyn actions and it just originates other actions to execute, these actions will be triggered by ` next `.
 
 ```js
 // api.js
@@ -68,7 +68,7 @@ export default ({getState, dispatch}) => (next) => (action) => {
 
 #### applyMiddleware
 
-`api.js`  must be covered in ` applyMiddleware  ` to does work as expected.
+`api.js`  must be composed in ` applyMiddleware  ` that work as expected.
 
 ```js
 // store.js
