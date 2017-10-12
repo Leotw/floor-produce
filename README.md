@@ -1,7 +1,7 @@
 # floor-produce
 action in redux applyMiddleware | 在调用链中触发action
 
-## Introduce
+## Profile
 
 #### synchronization actions 
 
